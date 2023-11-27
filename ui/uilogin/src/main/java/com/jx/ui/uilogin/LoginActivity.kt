@@ -30,21 +30,25 @@ class LoginActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        dataBind?.etUsername?.let { setSelection(it) }
-        dataBind?.etPwd?.let { setSelection(it) }
+        setSelection(dataBind?.etUsername, dataBind?.etPwd)
     }
 
-    private fun setSelection(editText: EditText) {
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+    private fun setSelection(vararg editTexts: EditText?) {
+        editTexts.forEach { editText ->
+            editText?.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?, start: Int,
+                    count: Int, after: Int
+                ) {
+                }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                }
 
-            override fun afterTextChanged(s: Editable?) {
-                editText.setSelection(s.toString().length)
-            }
-        })
+                override fun afterTextChanged(s: Editable?) {
+                    editText.setSelection(s.toString().length)
+                }
+            })
+        }
     }
 }
