@@ -30,38 +30,12 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            BaseAndroid2Theme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("mainactivity value1 = ${value1} value2= ${value2_}")
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
         ARouter.getInstance().inject(this)
     }
 
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "value1 = ${value1} value2= ${value2_}")
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    BaseAndroid2Theme {
-        Greeting("Android")
     }
 }

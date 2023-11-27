@@ -21,6 +21,7 @@ ext {
             "app"     : "com.jx.baseandroid2",
             "uimain"    : "com.jx.ui.uimain",
             "uilogin"   : "com.jx.ui.uilogin",
+            "uiabout"   : "com.jx.ui.uiabout",
 
             "funclogin": "com.jx.func.funclogin",
 

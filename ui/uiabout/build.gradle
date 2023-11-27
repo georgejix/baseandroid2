@@ -1,15 +1,21 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-}
 def cfg = rootProject.ext
-
+if (cfg.isDebug) {
+    apply plugin: 'com.android.application'
+    apply plugin: 'kotlin-kapt'
+    apply plugin: 'org.jetbrains.kotlin.android'
+} else {
+    apply plugin: 'com.android.library'
+    apply plugin: 'kotlin-kapt'
+    apply plugin: 'org.jetbrains.kotlin.android'
+}
 android {
-    namespace cfg.applicationId.app
+    namespace cfg.applicationId.uiabout
     compileSdk cfg.android.compileSdkVersion
 
     defaultConfig {
-        applicationId cfg.applicationId.app
+        if (cfg.isDebug) {
+            applicationId cfg.applicationId.uiabout
+        }
         minSdk cfg.android.minSdkVersion
         targetSdk cfg.android.targetSdkVersion
         versionCode cfg.android.versionCode
@@ -18,6 +24,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
         }
     }
 
@@ -48,9 +64,6 @@ android {
 }
 
 dependencies {
-
     implementation project(":base:basemain")
-    implementation project(":ui:uilogin")
-    implementation project(":ui:uimain")
-    implementation project(":ui:uiabout")
+    kapt cfg.libARouterCompiler
 }
