@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_navigation">
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/main_fragment">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.jx.ui.uimain.ui.fragment.MainFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.jx.ui.uimain.ui.fragment.HomeFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/square_fragment"
+        android:name="com.jx.ui.uimain.ui.fragment.MsgFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/msg_fragment"
+        android:name="com.jx.ui.uimain.ui.fragment.MsgFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/mine_fragment"
+        android:name="com.jx.ui.uimain.ui.fragment.MsgFragment">
+
+    </fragment>
 
 </navigation>
